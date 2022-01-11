@@ -1,11 +1,15 @@
 import {
-  MiddlewareConsumer,
-  Module,
-  NestModule,
-  RequestMethod,
+	MiddlewareConsumer,
+	Module,
+	NestModule,
+	RequestMethod,
 } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
+import {
+	APP_FILTER,
+	APP_GUARD,
+	APP_INTERCEPTOR,
+} from '@nestjs/core';
 import { ScheduleModule } from '@nestjs/schedule';
 import configuration from './config/configuration';
 import { AuditLogger } from './interceptors/audit-log.interceptor';
@@ -45,73 +49,73 @@ import { MetricsModule } from './modules/metrics/metrics.module';
 import { MetaModule } from './modules/meta/meta.module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      load: [configuration],
-    }),
-    ScheduleModule.forRoot(),
-    PrismaModule,
-    TasksModule,
-    UsersModule,
-    AuthModule,
-    MailModule,
-    SessionsModule,
-    EmailsModule,
-    GroupsModule,
-    MultiFactorAuthenticationModule,
-    ApiKeysModule,
-    ApprovedSubnetsModule,
-    DomainsModule,
-    DnsModule,
-    GeolocationModule,
-    MembershipsModule,
-    StripeModule,
-    AuditLogsModule,
-    WebhooksModule,
-    ElasticSearchModule,
-    SlackModule,
-    S3Module,
-    CloudinaryModule,
-    GitHubModule,
-    GoogleMapsModule,
-    PuppeteerModule,
-    MetricsModule,
-    MetaModule,
-  ],
-  providers: [
-    {
-      provide: APP_FILTER,
-      useClass: HttpExceptionFilter,
-    },
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: RateLimitInterceptor,
-    },
-    {
-      provide: APP_GUARD,
-      useClass: StaartAuthGuard,
-    },
-    {
-      provide: APP_GUARD,
-      useClass: ScopesGuard,
-    },
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: AuditLogger,
-    },
-  ],
+	imports: [
+		ConfigModule.forRoot({
+			load: [ configuration ],
+		}),
+		ScheduleModule.forRoot(),
+		PrismaModule,
+		TasksModule,
+		UsersModule,
+		AuthModule,
+		MailModule,
+		SessionsModule,
+		EmailsModule,
+		GroupsModule,
+		MultiFactorAuthenticationModule,
+		ApiKeysModule,
+		ApprovedSubnetsModule,
+		DomainsModule,
+		DnsModule,
+		GeolocationModule,
+		MembershipsModule,
+		StripeModule,
+		AuditLogsModule,
+		WebhooksModule,
+		ElasticSearchModule,
+		SlackModule,
+		S3Module,
+		CloudinaryModule,
+		GitHubModule,
+		GoogleMapsModule,
+		PuppeteerModule,
+		MetricsModule,
+		MetaModule,
+	],
+	providers: [
+		{
+			provide: APP_FILTER,
+			useClass: HttpExceptionFilter,
+		},
+		{
+			provide: APP_INTERCEPTOR,
+			useClass: RateLimitInterceptor,
+		},
+		{
+			provide: APP_GUARD,
+			useClass: StaartAuthGuard,
+		},
+		{
+			provide: APP_GUARD,
+			useClass: ScopesGuard,
+		},
+		{
+			provide: APP_INTERCEPTOR,
+			useClass: AuditLogger,
+		},
+	],
 })
 export class AppModule implements NestModule {
-  public configure(consumer: MiddlewareConsumer): void {
-    consumer
-      .apply(RawBodyMiddleware)
-      .forRoutes({
-        path: '/webhooks/stripe',
-        method: RequestMethod.POST,
-      })
-      .apply(JsonBodyMiddleware)
-      .forRoutes('*')
-      .apply(ApiLoggerMiddleware)
-      .forRoutes('*');
-  }
+	public configure(consumer: MiddlewareConsumer): void {
+		consumer
+				.apply(RawBodyMiddleware)
+				.forRoutes({
+					path: '/webhooks/stripe',
+					method: RequestMethod.POST,
+				})
+				.apply(JsonBodyMiddleware)
+				.forRoutes('*')
+				.apply(ApiLoggerMiddleware)
+				.forRoutes('*');
+	}
 }
