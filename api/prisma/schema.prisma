@@ -5,7 +5,7 @@ generator client {
 
 datasource mysql {
   provider = "mysql"
-  url      = "mysql://root:12345@localhost:3306/saas"
+  url      = "mysql://root:12345@localhost:3306/saas?schema=public"
 }
 
 model User {
