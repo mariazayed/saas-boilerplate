@@ -4,10 +4,18 @@ import {
 	OnModuleInit,
 } from '@nestjs/common';
 import {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 	ApprovedSubnet,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 	Email,
 	PrismaClient,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 	Session,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 	User,
 } from '@prisma/client';
 import { Expose } from './prisma.interface';

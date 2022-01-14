@@ -7,6 +7,8 @@ import {
   ParseIntPipe,
   Post,
 } from '@nestjs/common';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { User } from '@prisma/client';
 import { MFA_PHONE_OR_TOKEN_REQUIRED } from '../../errors/errors.constants';
 import { Expose } from '../../providers/prisma/prisma.interface';

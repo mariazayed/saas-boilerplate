@@ -1,4 +1,6 @@
 import type { Request as NestRequest } from '@nestjs/common';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { UserRole } from '@prisma/client';
 import type { Request as ExpressRequest } from 'express';
 

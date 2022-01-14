@@ -7,10 +7,18 @@ import {
 	UnprocessableEntityException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import type { Prisma } from '@prisma/client';
 import {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 	Email,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 	MfaMethod,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 	User,
 } from '@prisma/client';
 import {

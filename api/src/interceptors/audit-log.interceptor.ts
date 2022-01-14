@@ -6,6 +6,8 @@ import {
   NestInterceptor,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import type { Prisma } from '@prisma/client';
 import { getClientIp } from 'request-ip';
 import { Observable } from 'rxjs';

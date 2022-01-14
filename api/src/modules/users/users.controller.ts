@@ -14,6 +14,8 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { User } from '@prisma/client';
 import { Files } from '../../helpers/interfaces';
 import { CursorPipe } from '../../pipes/cursor.pipe';

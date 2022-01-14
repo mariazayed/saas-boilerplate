@@ -1,5 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import type { Prisma } from '@prisma/client';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { Group } from '@prisma/client';
 import randomColor from 'randomcolor';
 import { GROUP_NOT_FOUND } from '../../errors/errors.constants';

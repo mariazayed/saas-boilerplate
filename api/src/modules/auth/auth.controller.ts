@@ -7,6 +7,8 @@ import {
 	Ip,
 	Post,
 } from '@nestjs/common';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { User } from '@prisma/client';
 import { Expose } from '../../providers/prisma/prisma.interface';
 import {
