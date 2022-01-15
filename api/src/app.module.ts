@@ -59,7 +59,6 @@ import {MetaModule} from './modules/meta/meta.module';
         // Checking
         AuthModule,
 
-
         // To check
         ScheduleModule.forRoot(),
         PrismaModule,
