@@ -13,18 +13,19 @@ export class ApiLoggerMiddleware implements NestMiddleware {
   ) {}
 
   use(request: UserRequest, res: Response, next: NextFunction) {
-    const config = this.configService.get<Configuration['tracking']>(
-      'tracking',
-    );
-    let date = new Date();
+    const config = this.configService.get<Configuration['tracking']>('tracking');
+    const date = new Date();
+
     res.on('finish', () => {
       let authorizationKey = '';
-      if (typeof request.query.api_key === 'string')
-        authorizationKey = request.query.api_key.replace('Bearer ', '');
-      else if (typeof request.headers['x-api-key'] === 'string')
-        authorizationKey = request.headers['x-api-key'].replace('Bearer ', '');
-      else if (request.headers.authorization)
-        authorizationKey = request.headers.authorization.replace('Bearer ', '');
+      if (typeof request.query.api_key === 'string') {
+          authorizationKey = request.query.api_key.replace('Bearer ', '');
+      } else if (typeof request.headers['x-api-key'] === 'string') {
+          authorizationKey = request.headers['x-api-key'].replace('Bearer ', '');
+      } else if (request.headers.authorization) {
+          authorizationKey = request.headers.authorization.replace('Bearer ', '');
+      }
+
       const obj = {
         date,
         method: request.method,
@@ -34,14 +35,13 @@ export class ApiLoggerMiddleware implements NestMiddleware {
         duration: new Date().getTime() - date.getTime(),
         status: res.statusCode,
       };
-      if (
-        config.mode === 'all' ||
-        config.mode === request.user?.type ||
-        (config.mode === 'api-key-or-user' &&
-          (request.user?.type === 'api-key' || request.user?.type === 'user'))
-      )
-        this.elasticSearchService.index(config.index, obj);
+
+      if (config.mode === 'all' || config.mode === request.user?.type ||
+        (config.mode === 'api-key-or-user' && (request.user?.type === 'api-key' || request.user?.type === 'user'))) {
+          this.elasticSearchService.index(config.index, obj);
+      }
     });
+
     next();
   }
 }

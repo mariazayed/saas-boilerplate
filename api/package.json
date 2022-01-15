@@ -2,8 +2,8 @@
   "name": "api",
   "version": "0.1.0",
   "description": "SaaS backend framework with users, payments, APIs, and more",
-  "repository": "git@github.com:staart/api.git",
-  "author": "Anand Chowdhary <mail@anandchowdhary.com>",
+  "repository": "https://github.com/mariazayed/saas-boilerplate.git",
+  "author": "Maria Zayed <mariawzayed@gmail.com>",
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",

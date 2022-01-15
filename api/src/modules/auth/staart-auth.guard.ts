@@ -13,7 +13,11 @@ export class StaartAuthGuard extends AuthGuard('staart') {
     const decoratorSkip =
       this.reflector.get(STAART_PUBLIC_ENDPOINT, context.getClass()) ||
       this.reflector.get(STAART_PUBLIC_ENDPOINT, context.getHandler());
-    if (decoratorSkip) return true;
+
+    if (decoratorSkip) {
+        return true
+    }
+
     return super.canActivate(context);
   }
 }
