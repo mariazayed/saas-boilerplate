@@ -39,16 +39,12 @@ export class AuthController {
     async login(@Body() data: LoginDto,
                 @Ip() ip: string,
                 @Headers('User-Agent') userAgent: string,
-                @Body('origin') origin?: string,
-    ): Promise<TokenResponse | TotpTokenResponse> {
-        return this.authService.login(
+                @Body('origin') origin?: string,): Promise<TokenResponse | TotpTokenResponse> {
+        console.log(data,
             ip,
             userAgent,
-            data.email,
-            data.password,
-            data.code,
-            origin
-        );
+            origin)
+        return this.authService.login(ip, userAgent, data.email, data.password, data.code, origin);
     }
 
     @Post('register')

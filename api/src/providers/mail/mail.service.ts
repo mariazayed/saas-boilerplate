@@ -23,7 +23,8 @@ export class MailService {
 
     constructor(private configService: ConfigService) {
         this.config = this.configService.get<Configuration['email']>('email');
-        if (this.config.ses?.accessKeyId)
+
+        if (this.config.ses?.accessKeyId) {
             this.transport = nodemailer.createTransport({
                 SES: new SES({
                     apiVersion: '2010-12-01',
@@ -32,7 +33,9 @@ export class MailService {
                     region: this.config.ses.region,
                 }),
             } as SESTransport.Options);
-        else this.transport = nodemailer.createTransport(this.config.transport);
+        } else {
+            this.transport = nodemailer.createTransport(this.config.transport);
+        }
     }
 
     send(options: Mail.Options & MailOptions) {
@@ -90,7 +93,10 @@ export class MailService {
     }
 
     private async readTemplateUnMemoized(name: string) {
-        if (!name.endsWith('.html')) name = `${name}.md`;
+        if (!name.endsWith('.html')) {
+            name = `${name}.md`;
+        }
+
         return fs.readFile(join('.', 'src', 'templates', name), 'utf8');
     }
 }
