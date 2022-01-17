@@ -1,8 +1,7 @@
 # Email
 
 API supports sending transactions emails. You can send emails using any SMTP provider
-or [nodemailer/nodemailer](https://github.com/nodemailer/nodemailer)-supported configuration, such as AWS SES
-or `sendmail`.
+or [nodemailer](https://nodemailer.com/about/) - supported configuration, such as AWS SES or `sendmail`.
 
 ## Usage
 
@@ -12,18 +11,18 @@ To send a new email, you can use the `MailService`:
 
 ```ts
 class ExampleService {
-    constructor(private mailService: MailService) {
-    }
+	constructor(private mailService: MailService) {
+	}
 
-    doSomething() {
-        return this.mailService.send({
-            to: 'Example User <user@example.com>',
-            template: 'auth/password-reset',
-            data: {
-                name: 'Example User',
-            },
-        });
-    }
+	doSomething() {
+		return this.mailService.send({
+			to: 'Example User <user@example.com>',
+			template: 'auth/password-reset',
+			data: {
+				name: 'Example User',
+			},
+		});
+	}
 }
 ```
 
