@@ -38,7 +38,7 @@
     "@slack/web-api": "^6.0.0",
     "@staart/mustache-markdown": "^3.0.3",
     "aws-elasticsearch-connector": "^9.0.1",
-    "aws-sdk": "^2.824.0",
+    "aws-sdk": "^2.1058.0",
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.5",
     "circularbuffer": "^0.1.1",
